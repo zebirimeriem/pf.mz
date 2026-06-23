@@ -670,37 +670,83 @@
     user-select: none;
   }
 
- /* =========================================================
+/* =========================================================
      MOBILE RESPONSIVENESS IMPROVEMENTS
-     Additions only — existing rules unchanged.
   ========================================================= */
 
-  /* ASCII art: dynamically scale the layout proportionally to the viewport */
+  /* Global overwrite to make sure ASCII container is always dynamic */
+  .ascii-stage {
+    width: 100% !important;
+    overflow: hidden !important;
+    display: flex !important;
+    justify-content: flex-end !important;
+  }
+
+  /* Make characters shrink dynamically like an SVG instead of forcing scrolls or wrapping */
+  pre.ascii-body {
+    width: auto !important;
+    max-width: 100% !important;
+    white-space: pre !important;
+    word-break: keep-all !important;
+    overflow-wrap: normal !important;
+    text-align: right !important;
+  }
+
   @media (max-width: 980px) {
+    nav { justify-content: center; text-align: center; }
+    .nav-left, .nav-right { order: 2; }
+    .nav-center { order: 1; flex-basis: 100%; justify-content: center; }
+
+    #home {
+      flex-direction: column-reverse;
+      text-align: center;
+      padding: 2rem 6vw 4rem;
+      gap: 2.5rem;
+      min-height: auto;
+    }
+    .left { max-width: 100%; }
+    
     .ascii-stage {
-      overflow: hidden !important;
-      display: flex !important;
       justify-content: center !important;
-      width: 100% !important;
+    }
+    pre.ascii-body { 
+      font-size: 0.42vw !important; 
+      line-height: 0.42vw !important; 
+      letter-spacing: 0.01vw !important;
+    }
+         
+    .project-card {
+      flex-direction: column;
+      align-items: stretch;
+      text-align: center;
+      gap: 1.25rem;
+    }
+    .project-thumb {
+      width: 100%;
+      height: 180px;
+    }
+    .project-description { max-width: 100%; }
+
+    .illustration-grid {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
     }
 
-    pre.ascii-body {
-      font-size: 0.28vw !important;
-      line-height: 0.28vw !important;
-      letter-spacing: 0.005vw !important;
-      text-align: center !important;
-      width: 100% !important;
-      min-width: 0 !important;
+    .contact-grid {
+      grid-template-columns: 1fr;
     }
   }
 
   @media (max-width: 767px) {
-    /* Section inner padding: tighter on small screens */
+    pre.ascii-body {
+      font-size: 0.38vw !important;
+      line-height: 0.38vw !important;
+    }
+
     .section-inner {
       padding: 3.5rem 5vw 4.5rem;
     }
 
-    /* Nav center: allow slight wrapping but stay centred */
     .nav-center {
       gap: 0.15rem;
       font-size: 12px;
@@ -710,23 +756,25 @@
       padding: 0.45rem 0.85rem;
     }
 
-    /* Project card: full-width thumb */
     .project-thumb {
       height: 160px;
     }
 
-    /* Contact grid already 1-col via 980px rule */
     .contact-card {
       padding: 1.5rem 1.25rem;
     }
 
-    /* Home section: respect safe areas */
     #home {
       padding: 1.5rem 5vw 3rem;
     }
   }
 
   @media (max-width: 414px) {
+    pre.ascii-body {
+      font-size: 0.35vw !important;
+      line-height: 0.35vw !important;
+    }
+
     .nav-center a {
       padding: 0.4rem 0.7rem;
     }
@@ -745,13 +793,17 @@
   }
 
   @media (max-width: 320px) {
+    pre.ascii-body {
+      font-size: 0.33vw !important;
+      line-height: 0.33vw !important;
+    }
+
     .nav-center a {
       padding: 0.35rem 0.55rem;
       font-size: 11px;
     }
   }
 
-  /* Tablet: two-column illustrations back */
   @media (min-width: 768px) and (max-width: 980px) {
     .illustration-grid {
       grid-template-columns: repeat(2, 1fr);
