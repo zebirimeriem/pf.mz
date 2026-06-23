@@ -670,30 +670,31 @@
     user-select: none;
   }
 
-  /* =========================================================
+ /* =========================================================
      MOBILE RESPONSIVENESS IMPROVEMENTS
      Additions only — existing rules unchanged.
   ========================================================= */
 
-  /* ASCII art: allow horizontal scroll on narrow screens
-     while preserving exact character layout */
-  @media (max-width: 767px) {
+  /* ASCII art: dynamically scale the layout proportionally to the viewport */
+  @media (max-width: 980px) {
     .ascii-stage {
-      overflow: hidden;
-      display: flex;
-      justify-content: center;
-      width: 100%;
+      overflow: hidden !important;
+      display: flex !important;
+      justify-content: center !important;
+      width: 100% !important;
     }
 
-   pre.ascii-body {
-      font-size: 0.35vw !important;
-      line-height: 0.35vw !important;
-      letter-spacing: 0.01vw !important;
-      text-align: center;
-      width: 100%;
-      min-width: 0;
+    pre.ascii-body {
+      font-size: 0.28vw !important;
+      line-height: 0.28vw !important;
+      letter-spacing: 0.005vw !important;
+      text-align: center !important;
+      width: 100% !important;
+      min-width: 0 !important;
     }
+  }
 
+  @media (max-width: 767px) {
     /* Section inner padding: tighter on small screens */
     .section-inner {
       padding: 3.5rem 5vw 4.5rem;
@@ -726,11 +727,6 @@
   }
 
   @media (max-width: 414px) {
-    pre.ascii-body {
-      font-size: 1.3px;
-      line-height: 1.3px;
-    }
-
     .nav-center a {
       padding: 0.4rem 0.7rem;
     }
@@ -748,19 +744,7 @@
     }
   }
 
-  @media (max-width: 375px) {
-    pre.ascii-body {
-      font-size: 1.1px;
-      line-height: 1.1px;
-    }
-  }
-
   @media (max-width: 320px) {
-    pre.ascii-body {
-      font-size: 0.95px;
-      line-height: 0.95px;
-    }
-
     .nav-center a {
       padding: 0.35rem 0.55rem;
       font-size: 11px;
