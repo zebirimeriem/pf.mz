@@ -674,7 +674,7 @@
      MOBILE RESPONSIVENESS IMPROVEMENTS
   ========================================================= */
 
-  /* Global overwrite to make sure ASCII container is always dynamic */
+  /* Global overwrite to make sure ASCII container is always perfectly fluid */
   .ascii-stage {
     width: 100% !important;
     overflow: hidden !important;
@@ -682,7 +682,7 @@
     justify-content: flex-end !important;
   }
 
-  /* Make characters shrink dynamically like an SVG instead of forcing scrolls or wrapping */
+  /* Force the text lines to shrink proportionally like an SVG image */
   pre.ascii-body {
     width: auto !important;
     max-width: 100% !important;
@@ -709,6 +709,8 @@
     .ascii-stage {
       justify-content: center !important;
     }
+    
+    /* Responsive viewport calculations explicitly override the desktop defaults */
     pre.ascii-body { 
       font-size: 0.42vw !important; 
       line-height: 0.42vw !important; 
@@ -804,6 +806,7 @@
     }
   }
 
+  /* Tablet layout structural restoration */
   @media (min-width: 768px) and (max-width: 980px) {
     .illustration-grid {
       grid-template-columns: repeat(2, 1fr);
